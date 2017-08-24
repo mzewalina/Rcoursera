@@ -1,0 +1,43 @@
+---
+title: "Regression Coursera"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r mtcars}
+fullmodel<-lm(mpg~ . , data=mtcars)
+summary(fullmodel)
+```
+```{r}
+ammod<-lm(mpg ~ am, data=mtcars)
+summary(ammod)
+
+
+```
+R-squared is fairly low (.36), however, transission type is significant
+
+```{r}
+boxplot(mpg~am, data=mtcars, main= "Overall MPG by Type", names=c("automatic", "manual"))
+```
+at face value-- manual appears to have better MPG-- however, the average for automatic is contained within the error bars for automatic
+```{r}
+pairs(mpg ~ ., data = mtcars)
+```
+```{r}
+mvr <- lm(mpg~am + wt + hp + cyl, data = mtcars)
+summary(mvr)
+anova(ammod,mvr)
+```
+A more Inclusive Model reduces the residual sum of squares significantly
+```{r}
+plot(mvr)
+```
+```{r}
+plot(ammod)
+```
