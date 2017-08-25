@@ -1,10 +1,13 @@
 ---
 title: "Regression Coursera"
 output:
-  pdf_document: default
   html_document: default
 ---
+**Summary**
+This project was done to explore the relationship between mileage in cars and transmission type (automatic vs manual)-- 
+A simple model only looking at tramsission type finds a 7.25 MPG difference between the types of transmission (p < .05) 
 
+R-squared for transission type only yields a low R-squared (.36).  Further analysis shows that there are other more significant contributors to MPG such as the weight of the car.  A more complete model (including weight, hp, cyl) changes the p-value of transmission type to no longer being significant (p=.3) but improves R-squared (.85) with only weight being significant at the .05 level.  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
